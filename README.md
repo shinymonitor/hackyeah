@@ -1,4 +1,7 @@
-# PIXPATCH
+<div align="center">
+    <img src="assets/LOGO.png" width="200">
+    <h1>PIXPATCH</h1>
+</div>
 
 **A resilient, end-to-end encrypted dispatch system for hostile network environments.**
 
@@ -24,11 +27,27 @@ This approach provides:
 
 Pixpatch simulates a 3-node network (a Dispatcher, an untrusted Relay, and a Field Agent) in a single terminal window to visualize the protocol's security.
 
-![SCREENSHOT](assests/SS.png)
+![DISPATCH](assets/DISPATCH.png)
+
+Type the dispatch message and enter to send
+
+![RELAY](assets/RELAY.png)
+
+See the relayed packets
+
+![AGENT](assets/AGENT.png)
+
+Decodes and reads the messages
+
+### Key bindings
+ARROW LEFT/RIGHT : Switch between node types
+CTRL+Q : Quit
 
 ### How to Build and Run
 
 The project is built with a simple Makefile. It depends on the open-source `libefpix` library, which in turn depends on `monocypher`.
+
+**POSIX compliant OS required (Linux recommended)**
 
 ```bash
 # Clone the repository
