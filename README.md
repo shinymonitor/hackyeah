@@ -41,6 +41,7 @@ Decodes and reads the messages
 
 ### Key bindings
 ARROW LEFT/RIGHT : Switch between node types
+
 CTRL+Q : Quit
 
 ### How to Build and Run

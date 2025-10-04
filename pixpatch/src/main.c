@@ -226,6 +226,10 @@ char* title;
 void draw(NodeType node_type, char* text){
     update_screen_dimensions();
     printf("\x1b[2J\x1b[H");
+    printf("\x1b["LEAF_FG";"BLACK_BG"m");
+    printf("PIXPATCH v0.1.0 - Resilient Dispatch System");
+    for (size_t i=0; i<(screen_width)-strlen("PIXPATCH v0.1.0 - Resilient Dispatch System"); ++i) printf("%c", ' ');
+    printf("\n");
     printf("\x1b["BLACK_FG";"LEAF_BG"m");
     if (node_type==DISPATCH) title="DISPATCH";
     else if (node_type==RELAY) title="RELAY";
@@ -309,9 +313,7 @@ int main() {
                 if (!agent_recv(packet, &recv_msg)) {
                     strcat(agent_text, "MESSAGE TOO OLD\n");
                 } else {
-                    strcat(agent_text, "[");
-                    strcat(agent_text, (char*)recv_msg.contact.their_alias);
-                    strcat(agent_text, "] ");
+                    strcat(agent_text, "[RECEIVED] ");
                     strcat(agent_text, (char*)recv_msg.message);
                     strcat(agent_text, "\n");
                 }
