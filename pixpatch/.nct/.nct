@@ -1,0 +1,4 @@
+test_compile=gcc test.c -o .nct/test -Wall -Wextra
+test_binary=.nct/test
+build_compile=gcc build.c -o .nct/build -Wall -Wextra
+build_binary=.nct/build
