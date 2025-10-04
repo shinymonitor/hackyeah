@@ -24,6 +24,8 @@ This approach provides:
 
 Pixpatch simulates a 3-node network (a Dispatcher, an untrusted Relay, and a Field Agent) in a single terminal window to visualize the protocol's security.
 
+![SCREENSHOT](assests/SS.png)
+
 ### How to Build and Run
 
 The project is built with a simple Makefile. It depends on the open-source `libefpix` library, which in turn depends on `monocypher`.

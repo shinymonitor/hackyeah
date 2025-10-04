@@ -160,7 +160,11 @@ int main() {
     add_contact(sender_contacts, &sender_contact_count, "AGENT", receiver_node.kx_public_key, receiver_node.sign_public_key, "DISPATCH");
     add_contact(receiver_contacts, &receiver_contact_count, "DISPATCH", sender_node.kx_public_key, sender_node.sign_public_key, "AGENT");
     
-    printf("============DISPATCH================\n");
+    system("clear");
+    printf("==============================================================\n");
+    printf("                        PIXPATCH DEMO                         \n");
+    printf("==============================================================\n");
+    printf("==========================DISPATCH HQ=========================\n");
     char dispatch_message[MESSAGE_SIZE]={0};
     printf("DISPATCH: ");
     fgets(dispatch_message, MESSAGE_SIZE, stdin);
@@ -170,29 +174,28 @@ int main() {
     }
     uint8_t packet[PACKET_SIZE];
     dispatch_send(dispatch_message, packet);
-    printf("DISPATCHING RELAYING: %s\n", dispatch_message);
-    printf("PACKET: ");
-    print_hex(packet, PACKET_SIZE);
+    printf("[SENT] Encrypted packet: \n");
+    print_hex(packet, 32);
+    printf("...");
     getchar();
-    system("clear");
 
     //relay packet with any means (radio)
 
     //relay node gets the relayed packet
-    printf("============RELAY NODE================\n");
-    printf("RELAYING: ");
-    print_hex(packet, PACKET_SIZE);
+    printf("======================RELAY NODE==============================\n");
+    printf("[RELAY] Relaying packet: \n");
+    print_hex(packet, 32);
+    printf("...");
     getchar();
-    system("clear");
 
 
     //relay packet with any means (radio)
 
     //agent node gets the relayed packet
-    printf("============AGENT================\n");
+    printf("=========================AGENT=================================\n");
     Recv recv_msg = {0};
-    agent_recv(packet, &recv_msg);
-    printf("[%s] ", recv_msg.contact.their_alias);
+    if (!agent_recv(packet, &recv_msg)) printf("MESSAGE TOO OLD");
+    printf("\n[%s] ", recv_msg.contact.their_alias);
     printf("%s\n", recv_msg.message);
 
     return 0;

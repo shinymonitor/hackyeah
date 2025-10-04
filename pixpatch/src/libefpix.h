@@ -12,7 +12,7 @@
 #define HASH_SIZE 64
 #define POW_NONCE_SIZE 8
 #define POW_ZEROS 2
-#define MAX_AGE 5
+#define MAX_AGE 1000
 //=====================HELPER PREPROCS=========================
 #define UNICAST 0
 #define SIGNED_BROADCAST 1
