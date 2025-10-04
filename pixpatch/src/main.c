@@ -131,6 +131,23 @@ void dispatch_send(char* message, uint8_t packet[PACKET_SIZE]){
     encode(send_msg, packet);
 }
 
+void agent_send(char* message, uint8_t packet[PACKET_SIZE]){
+    Send send_msg={0};
+    send_msg.anonymous = false;
+    send_msg.broadcast = false;
+    memcpy(&send_msg.identity, &receiver_node, sizeof(Identity));
+    alias_copy(send_msg.my_alias, "AGENT");
+    memcpy(send_msg.receiver_kx_public_key, sender_node.kx_public_key, 32);
+    get_timestamp(send_msg.timestamp);
+    memcpy(send_msg.internal_address, "001", 3);
+    strncpy((char*)send_msg.message, message, MESSAGE_SIZE - 1);
+    encode(send_msg, packet);
+}
+
+bool dispatch_recv(uint8_t packet[PACKET_SIZE], Recv* recv){
+    return decode(packet, sender_node, recv, sender_hash_check_and_relay, sender_get_contact_from_alias, get_timestamp, get_age);
+}
+
 bool agent_recv(uint8_t packet[PACKET_SIZE], Recv* recv){
     return decode(packet, receiver_node, recv, receiver_hash_check_and_relay, receiver_get_contact_from_alias, get_timestamp, get_age);
 }
