@@ -9,11 +9,11 @@
 
 ---
 
-### The Problem
+### Problem
 
 In conflict zones or disaster areas, traditional communication infrastructure is often the first thing to fail. Centralized systems like cell towers and internet exchanges are vulnerable targets, making it impossible for aid workers, journalists, and civilians to communicate securely. Existing decentralized solutions often lack the robust security or versatility needed when messages contain life-or-death information.
 
-### Our Solution: Pixpatch
+### Solution: Pixpatch
 
 Pixpatch is a proof-of-concept terminal application that demonstrates a new paradigm for secure communication. It is a dispatch system built on top of **[EFPIX](https://github.com/shinymonitor/libefpix)**, a zero-trust, encrypted flood protocol.
 
